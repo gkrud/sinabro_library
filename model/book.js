@@ -3,11 +3,13 @@ const Schema = mongoose.Schema;
 
 const Book = new Schema({
     title: String,
+    status: Boolean,
 });
 
-Book.static.create = (title)=>{
+Book.static.create = (title,status)=>{
     const book = new this({
-        title
+        title,
+        status
     });
     return book.save();
 }

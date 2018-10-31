@@ -37,7 +37,7 @@ exports.register = (req, res) => {
         if (user) {
             throw new Error('user id exists')
         } else {
-            res.status(200).json({message:'success logup'});
+            res.status(200).json({message:'success signup'});
             return User.create(username,id,pw);
         }
     }
@@ -61,7 +61,7 @@ exports.login = (req,res)=>{
     const check = (user) => {
         if(!user) {
             // user does not exist
-            throw new Error('You must logup');
+            throw new Error('You must signup');
         } else {
             // user exists, check the password
             if(user.verify(pw)) {
@@ -79,7 +79,7 @@ exports.login = (req,res)=>{
                             subject: 'user_info'
                         }, (err, token) => {
                             if (err) reject(err)
-                            resolve(token) 
+                            resolve(token)
                         });
                 }); 
                 return p;
